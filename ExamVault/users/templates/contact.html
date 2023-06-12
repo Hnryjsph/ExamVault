@@ -8,51 +8,29 @@
       <h1>Contact</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="">Home</a></li>
-          <li class="breadcrumb-item">Pages</li>
-          <li class="breadcrumb-item active">Contact</li>
+          <li class="breadcrumb-item"><a href="{% url 'users:dashboard' %}">Home</a></li>
+        
+          <li class="breadcrumb-item active">Feedback</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
+      <div class="card basic">
+            <div class="card-body">
+              <h5 class="card-title">Your Feedback is Important</h5>
 
+              <div>
+              
+                <p>We value your experience and input, and that's why we encourage you to share your feedback regarding our platform. Your feedback is crucial in helping us understand your needs and expectations better. By providing your insights and suggestions, you play a vital role in shaping the future of our platform. Your feedback allows us to identify areas that need improvement, address any issues you may have encountered, and enhance your overall user experience. We genuinely believe that together, we can create a platform that meets your requirements and exceeds your expectations. So please, take a moment to share your thoughts and help us make our platform even better for you and our entire user community. Your feedback matters to us, and we appreciate your contribution in making our platform the best it can be.</p>
+              </div>
+
+  
+
+            </div>
+          </div>
      <section class="section contact">
 
       <div class="row gy-4">
 
-        <div class="col-xl-6">
-
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-geo-alt"></i>
-                <h3>Address</h3>
-                <p>A108 Adam Street,<br>New York, NY 535022</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-telephone"></i>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-envelope"></i>
-                <h3>Email Us</h3>
-                <p>info@example.com<br>contact@example.com</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="info-box card">
-                <i class="bi bi-clock"></i>
-                <h3>Open Hours</h3>
-                <p>Monday - Friday<br>9:00AM - 05:00PM</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
 
         <div class="col-xl-6">
           <div class="card p-4">
@@ -61,10 +39,6 @@
 
                 <div class="col-md-6">
                   <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                 </div>
 
                 <div class="col-md-12">
@@ -78,9 +52,9 @@
                 <div class="col-md-12 text-center">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <div class="sent-message">Your Feedback has been sent. We will work toward the new feature Thank you!</div>
 
-                  <button type="submit">Send Message</button>
+                  <button type="submit">Send Feedback</button>
                 </div>
 
               </div>

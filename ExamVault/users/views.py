@@ -3,8 +3,12 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import LoginForm
+from .forms import LoginForm, UpdateUserForm
 from django.contrib.auth.decorators import login_required
+from .models import CustomUser
+from django.contrib.auth.hashers import make_password
+from django.urls import reverse_lazy
+
 
 @login_required
 def home(request):
@@ -74,7 +78,59 @@ def faq_view(request):
 
 @login_required
 def profile_view(request):
-	return render(request, 'profile.html', {})
+    user_update_form = UpdateUserForm()
+    if request.method == "POST":
+        if 'username' in request.POST:
+            username = request.POST['username']
+            first_name = request.POST['first name']
+            last_name = request.POST['last name']
+            gender = request.POST['gender']
+            phone_number = request.POST['phone number']
+            course = request.POST['course']
+            email = request.POST['email']
+            university = request.POST['university']
+            country = request.POST['country']
+
+            user = CustomUser.objects.get(pk = request.user.id)
+            user.username = username
+            user.first_name = first_name
+            user.last_name = last_name
+            user.gender = gender
+            user.phone_number = phone_number
+            user.course = course
+            user.email = email
+            user.university = university
+            user.country = country
+            user.save()
+            return redirect('/profile/')
+
+        elif "password" in request.POST:
+            password = request.POST['password']
+            newpassword = request.POST['newpassword']
+            renewpassword = request.POST['renewpassword']
+
+            user = CustomUser.objects.get(pk = request.user.id)
+            user_auth = authenticate(username = user.username, password = password)
+            if user_auth:
+                if newpassword == renewpassword:
+                    user.set_password(renewpassword)
+                    user.save()
+                    return redirect('/login/')
+                else:
+                    print("Passwords not the Same ")
+            else:
+                print("Incorrect Password")
+
+
+
+
+    else:
+        user_update_form = UpdateUserForm()
+   
+    context = {
+        'user_update_form': user_update_form,
+    }
+    return render(request, 'profile.html', context)
 
 @login_required
 def contact_view(request):

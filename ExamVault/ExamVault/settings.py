@@ -41,6 +41,10 @@ INSTALLED_APPS = [
 
     # local apps
     'users',
+    'questions',
+    'django_seed',
+    'notifications',
+    'subscription',
 ]
 
 MIDDLEWARE = [

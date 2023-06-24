@@ -1,0 +1,51 @@
+<!-- notifications.html -->
+{% extends 'base.html' %}
+
+{% block title %}Notifications{% endblock %}
+
+{% block content %}
+ 
+
+    <div class="pagetitle">
+      <h1>Collections</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'users:home' %}">Home</a></li>
+          <li class="breadcrumb-item">Pages</li>
+          <li class="breadcrumb-item active">Notifications</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+  
+
+    <div class="container mt-5">
+        <div class="title">
+          <h3>Notifications</h3>
+        </div>
+    </div>
+    
+      {% for notification in notifications %}
+      <div class="alert alert-info">
+        <div class="container">
+ 
+
+            <p> <i class="bi bi-bell"></i> <b>Info alert: </b>{{notification.message}}</p>
+              <form method="post">
+                {% csrf_token %}
+
+                 <input type="hidden" name="id" value="{{notification.id}}">
+                   <input type="hidden" name="check" value="true">
+
+
+               <button type="submit" class="btn btn-primary" >
+                 <i class="bi bi-x-lg"></i>
+              </button>
+          </form>
+        </div>
+        </div>
+        {% endfor %}
+    
+
+  
+{% endblock %}

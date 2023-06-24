@@ -1,0 +1,100 @@
+<!-- questions.html -->
+{% extends 'base.html' %}
+
+{% block title %}Questions{% endblock %}
+
+{% block content %}
+ 
+
+    <div class="pagetitle">
+      <h1>Questions</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'users:home' %}">Home</a></li>
+          <li class="breadcrumb-item">Pages</li>
+          <li class="breadcrumb-item active">Questions</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+
+        {% for question in questions %}
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ question.title|truncatechars:20 }} - {% if question.is_verified %}<i class="bi bi-check-circle-fill text-success"></i>  <b>Expert Verified</b> {% endif %}</h5>
+              <p>{{question.subject|truncatechars:70}}</p>
+
+
+                            <!-- Disabled Backdrop Modal -->
+              <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
+               <i class="bi bi-bookmarks"></i>
+              </button>
+              <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Create a Collection</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                       <form method="post">
+                        {% csrf_token %}
+        
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Collections</label>
+                  <div class="col-sm-10">
+                    
+                    <div class="form-floating mb-3">
+                      <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name = "collection">
+                        <option selected>Existing collections</option>
+                        <option value="Existing collections">Existing collections</option>
+                        {% for collection in collections %}
+                        <option value="{{collection.id}}">{{collection.title}}</option>
+                        {% endfor %}
+                      </select>
+                      <label for="floatingSelect">Works with selects</label>
+                    </div>
+                  </div>
+                </div>
+                <input type="hidden" name="question" value="{{question.id}}">
+
+                <div class="row mb-5">
+                  <label class="col-sm-2 col-form-label">Create</label>
+                  <div class="col-sm-10">
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">+</span>
+                      <input type="text" class="form-control" placeholder="collection name" aria-label="Username" aria-describedby="basic-addon1" name = "collection_name">
+                    </div>
+
+                  </div>
+                </div>
+
+            
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                      <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Disabled Backdrop Modal-->
+               </form>
+               <a href="{% url 'questions:details' id=question.id %}" class="btn btn-primary">Show</a>
+            </div>
+          </div>
+
+        </div>
+
+        {% endfor %}
+      </div>
+    </section>
+
+
+{% endblock %}

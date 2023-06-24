@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import LoginForm, UpdateUserForm
 from django.contrib.auth.decorators import login_required
-from .models import CustomUser
+from .models import CustomUser, Feedback, FrequentlyAskedQuestion
 from django.contrib.auth.hashers import make_password
 from django.urls import reverse_lazy
 
@@ -74,7 +74,9 @@ def logout_view(request):
 
 @login_required
 def faq_view(request):
-	return render(request, 'faq.html', {})
+    faqs = FrequentlyAskedQuestion.objects.all()
+    context = {'faqs':faqs}
+    return render(request, 'faq.html', context)
 
 @login_required
 def profile_view(request):
@@ -134,7 +136,21 @@ def profile_view(request):
 
 @login_required
 def contact_view(request):
-	return render(request, 'contact.html', {})
+    """ Feedback """
+    if request.method == 'POST':
+        subject = request.POST['subject']
+        message = request.POST['message']
+        user = request.user
+
+        feedback = Feedback()
+        feedback.user = user 
+        feedback.subject = subject
+        feedback.message = message
+        feedback.save()
+
+        return redirect("/contact/")
+
+    return render(request, 'contact.html', {})
 
 @login_required
 def dashboard_view(request):

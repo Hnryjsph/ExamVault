@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Solution</h1>
+    <hr>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{question.title}}</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vestibulum gravida malesuada. In hac habitasse platea dictumst.</p>
+            <hr>
+            <h5 class="card-title">Content</h5>
+            <p class="card-text">{{question.content_form_text}}</p>
+            <hr>
+            <h5 class="card-title">Additional resources</h5>
+            <p class="card-text">{{question.content}}</p>
+            <hr>
+            <h5 class="card-title">Expert</h5>
+            <p class="card-text">John Doe</p>
+            <hr>
+            <h5 class="card-title">Subject</h5>
+            <p class="card-text">{{question.subject}}</p>
+            <hr>
+            <h5 class="card-title">Verified</h5>
+            <p class="card-text">
+                {% if question.is_verified %}<i class="bi bi-check-circle-fill text-success"></i>  <b>Expert Verified</b> {% endif %}
+            </p>
+        </div>
+    </div>
+{% endblock %}

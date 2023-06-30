@@ -8,11 +8,12 @@ from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Feedback, FrequentlyAskedQuestion
 from django.contrib.auth.hashers import make_password
 from django.urls import reverse_lazy
-
+from questions.models import Collection, Question
 
 @login_required
 def home(request):
-	return render(request, 'dashboard.html', {})
+
+    return render(request, 'dashboard.html', {})
 
 
 def register(request):
@@ -81,8 +82,11 @@ def faq_view(request):
 @login_required
 def profile_view(request):
     user_update_form = UpdateUserForm()
+    user = CustomUser.objects.get(pk = request.user.id)
     if request.method == "POST":
         if 'username' in request.POST:
+            print(request.POST)
+            #image = request.POST['image']
             username = request.POST['username']
             first_name = request.POST['first name']
             last_name = request.POST['last name']
@@ -92,6 +96,7 @@ def profile_view(request):
             email = request.POST['email']
             university = request.POST['university']
             country = request.POST['country']
+
 
             user = CustomUser.objects.get(pk = request.user.id)
             user.username = username
@@ -131,6 +136,7 @@ def profile_view(request):
    
     context = {
         'user_update_form': user_update_form,
+        'person':user,
     }
     return render(request, 'profile.html', context)
 
@@ -154,4 +160,15 @@ def contact_view(request):
 
 @login_required
 def dashboard_view(request):
-	return render(request, 'dashboard.html', {})
+
+    collection_length = len(Collection.objects.all())
+
+    questions_length = len(Question.objects.all())
+    questions_rec = Question.objects.all()[:10]
+
+    context = {
+    "collection_length":collection_length,
+    "questions_length": questions_length,
+    "questions_rec":questions_rec
+    }
+    return render(request, 'dashboard.html', context)

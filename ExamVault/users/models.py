@@ -12,6 +12,7 @@ class CustomUser(AbstractUser):
     course = models.CharField(max_length = 50, default = 'None')
     university = models.CharField(max_length = 50, default = 'None')
     country = models.CharField(max_length = 50, default = 'Uganda')
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     # Add other custom fields as needed
 
     def __str__(self):

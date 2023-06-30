@@ -1,23 +1,23 @@
-<!-- questions.html -->
+<!--search.html -->
 {% extends 'base.html' %}
 
-{% block title %}Questions{% endblock %}
+{% block title %}Questions - Search{% endblock %}
 
 {% block content %}
  
 
     <div class="pagetitle">
-      <h1>Questions</h1>
+      <h1>Search</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{% url 'users:home' %}">Home</a></li>
           <li class="breadcrumb-item">Pages</li>
-          <li class="breadcrumb-item active">Questions</li>
+          <li class="breadcrumb-item active">Questions - Search</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section">
+     <section class="section">
       <div class="row">
 
         {% for question in questions %}

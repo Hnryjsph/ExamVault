@@ -33,6 +33,7 @@ class LoginForm(AuthenticationForm):
 
 
 class UpdateUserForm(forms.ModelForm):
+    image = forms.ImageField()
     username = forms.CharField(max_length = 20)
     first_name = forms.CharField(max_length= 20)
     last_name = forms.CharField(max_length = 20)
@@ -43,8 +44,9 @@ class UpdateUserForm(forms.ModelForm):
     university = forms.CharField(max_length = 50)
     country =forms.CharField(max_length = 50)
 
+
     class Meta:
         model = CustomUser
-        fields = ['username', 'first_name', 'last_name', 'gender', 'phone_number', 'course', 'email', 'university', 'country']
+        fields = ['image','username', 'first_name', 'last_name', 'gender', 'phone_number', 'course', 'email', 'university', 'country']
 
 

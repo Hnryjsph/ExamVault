@@ -31,17 +31,25 @@
                 
                 {% for collection in collections %}
                 <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><b>{{collection.title}}</b></h5>
+                  <div class="d-flex w-80 justify-content-between">
+                    <h4 class="mb-1"><b>{{collection.title}}</b></h4>
                     <small class="text-muted">{{collection.timestamp}}</small>
+                     <a href="{% url 'questions:collection_remove' id=collection.id %}" class="btn btn-dark"><i class="bi bi-x-lg"></i></a>
                   </div>
+
+
                   <p class="mb-1"></p>
                   
       
                  
                   
                   {% for question in collection.questions.all %}
+                   <div class="d-flex w-80 justify-content-between">
                     <a href="{% url 'questions:details' id=question.id %}" class="list-group-item list-group-item-action"> {{ forloop.counter }} - {{question}}</a>
+
+                    <a href="{% url 'questions:question_remove' id=question.id %}" class="btn btn-primary"><i class="bi bi-x"></i></a>
+
+                  </div>
                   {% endfor %}
                  
                   
@@ -56,6 +64,7 @@
 
      
       </div>
+
     </section>
 
 

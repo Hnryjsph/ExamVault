@@ -1,7 +1,7 @@
 <!-- questions.html -->
 {% extends 'base.html' %}
-
-{% block title %}Notifications{% endblock %}
+{% load static %}
+{% block title %}Subscriptions{% endblock %}
 
 {% block content %}
  
@@ -20,19 +20,38 @@
 
   <section id="pricing">
 
-    <div class="row">
-      <div class="pricing-column col-lg-4 col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h3>Starter Plan</h3>
+    <div class="row gy-4" data-aos="fade-left">
+
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="box">
+              <h3 style="color: #07d5c0;">Free Plan</h3>
+              <div class="price"><sup>UGX</sup>0<span> / mo</span></div>
+              <img src="{% static 'assets/img/pricing-free.png' %}" class="img-fluid" alt="">
+              <ul>
+                <li>Access Questions</li>
+                <li>No Solutions</li>
+                <li>Access to existing Expert solutions</li>
+              </ul>
+              <a href="{% url 'users:register' %}" class="btn btn-primary">Subscribe</a>
+            </div>
           </div>
-          <div class="card-body">
-            <h2><i> UGX 5000 / month </i> </h2>
-            <p>Access Exam Solutions</p>
-            <button class="btn btn-lg btn-block btn-outline-dark" type="button">Subscribe</button>
+
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="box">
+              <h3 style="color: #65c600;">Starter Plan</h3>
+              <div class="price"><sup>UGX</sup>5000<span> / mo</span></div>
+              <img src="{% static 'assets/img/pricing-starter.png' %}" class="img-fluid" alt="">
+              <ul>
+                <li>Questions</li>
+                <li>Solutions</li>
+                <li>Access Experts</li>
+                
+              </ul>
+              <a href="{% url 'users:register' %}" class="btn btn-primary">Subscribe</a>
+            </div>
           </div>
+
         </div>
-      </div>
 
     </div>
 

@@ -6,7 +6,7 @@ Exam Vault is a comprehensive online platform designed to provide university stu
 **Final Project Blog Article:** [Link to Blog Article]()  
 **Author(s) LinkedIn:** [Henry Joseph Phillip Lokuku](https://www.linkedin.com/in/hnry-jsph/), 
 
-![Exam Vault Screenshot]([5.png](https://drive.google.com/file/d/1TDfH0qyWFRPKUD5H6cJ8eaUc8YpFHYBr/view?usp=sharing))
+![Image Description](https://drive.google.com/uc?id=1TDfH0qyWFRPKUD5H6cJ8eaUc8YpFHYBr)
 
 ## Installation
 To install and run Exam Vault locally, follow these steps:

@@ -3,7 +3,7 @@
 ## Introduction
 Exam Vault is a comprehensive online platform designed to provide university students and educators with easy access to a wide range of examination questions for various course units and subjects.
 
-**Final Project Blog Article:** [Link to Blog Article]()  
+**Final Project Blog Article:** [Link to Blog Article](https://www.linkedin.com/pulse/exam-vault-unlocking-access-expertise-quality-joseph-phillip-lokuku)  
 **Author(s) LinkedIn:** [Henry Joseph Phillip Lokuku](https://www.linkedin.com/in/hnry-jsph/), 
 
 ![Image Description](https://drive.google.com/uc?id=1TDfH0qyWFRPKUD5H6cJ8eaUc8YpFHYBr)

@@ -15,7 +15,7 @@ from .models import TermsAndConditions
 @login_required
 def home(request):
 
-    return render(request, 'dashboard.html', {})
+    return render(request, 'landing.html', {})
 
 
 # A view that helps to register users 

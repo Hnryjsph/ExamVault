@@ -6,6 +6,7 @@ GENDER_CHOICES = [
 	('2', "female")
 ]
 
+# Custom User Model 
 class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=20)
     gender = models.CharField(max_length = 5, choices = GENDER_CHOICES, default = '1')
@@ -18,6 +19,7 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
 
+# Model for Feedback posted by user
 class Feedback(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     subject = models.CharField(max_length=255)
@@ -28,6 +30,7 @@ class Feedback(models.Model):
         return f"{self.subject} - {self.user.username}"
 
 
+# A Model for FAQs 
 class FrequentlyAskedQuestion(models.Model):
     question = models.CharField(max_length=255)
     answer = models.TextField()
@@ -35,3 +38,13 @@ class FrequentlyAskedQuestion(models.Model):
 
     def __str__(self):
         return self.question
+
+
+# Model that stores the terms and conditions 
+class TermsAndConditions(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

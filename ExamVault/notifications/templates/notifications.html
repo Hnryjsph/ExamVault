@@ -30,8 +30,8 @@
         <div class="container">
  
 
-            <p> <i class="bi bi-bell"></i> <b>Info alert: </b>{{notification.message}}</p>
-              <form method="post">
+            <p> <i class="bi bi-bell"></i> <b>Info alert: </b>{{notification.message}}
+                            <form method="post">
                 {% csrf_token %}
 
                  <input type="hidden" name="id" value="{{notification.id}}">
@@ -42,6 +42,8 @@
                  <i class="bi bi-x-lg"></i>
               </button>
           </form>
+            </p>
+
         </div>
         </div>
         {% endfor %}

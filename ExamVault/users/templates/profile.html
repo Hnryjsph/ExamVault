@@ -22,8 +22,8 @@
 
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-              <img src="{% static 'assets/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
+              <!-- {% static 'assets/img/profile-img.jpg' %} -->
+              <img src="{{user.image.url}}" alt="Profile" class="rounded-circle">
               <h2>{{user}}</h2>
               <h3>{{user.university}}</h3>
              
@@ -101,10 +101,10 @@
                    <div class="row mb-3">
                       <label for="{{ form.image.id_for_label }}" class="col-md-4 col-lg-3 col-form-label">{{form.image.label}}</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="{{form.image.label|lower}}" type="file" class="form-control" id="{{ form.image.id_for_label }}" value="{{request.user.image.url}}">
+                        <input name="{{form.image.label|lower}}" type="file" class="form-control" id="{{ form.image.id_for_label }}" value="{{user.image.url}}">
                       </div>
                     </div>
-
+                
                     <div class="row mb-3">
                       <label for="{{ form.username.id_for_label }}" class="col-md-4 col-lg-3 col-form-label">{{form.username.label}}</label>
                       <div class="col-md-8 col-lg-9">
@@ -126,13 +126,22 @@
                       </div>
                     </div>
 
+
+
+              
                     <div class="row mb-3">
                       <label for="{{ form.gender.id_for_label }}" class="col-md-4 col-lg-3 col-form-label">{{form.gender.label}}</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="{{form.gender.label|lower}}" type="text" class="form-control" id="{{ form.gender.id_for_label }}" value="{{user.gender}}">
+                         <select class="form-select" aria-label="Default select example"  name="{{form.gender.label|lower}}" id="{{ form.gender.id_for_label }}">
+                     <option value="{{user.gender}}" selected >{% if user.gender == "1" %} Male {% elif user.gender == "2" %} Female  {% endif %}</option>
+                      <option value="1" >Male</option>
+                      <option value="2" >Female</option>
+                      
+                    </select>
                       </div>
-                    </div>
+                  
 
+                </div>
                     <div class="row mb-3">
                       <label for="{{ form.phone_number.id_for_label }}" class="col-md-4 col-lg-3 col-form-label">{{form.phone_number.label}}</label>
                       <div class="col-md-8 col-lg-9">

@@ -1,7 +1,9 @@
 from django.db import models
 from users.models import CustomUser
 
+# A collection is like a bookmark
 
+# Quetion Model for storing questions
 class Question(models.Model):
     subject = models.CharField(max_length=100)
     title = models.CharField(max_length=200)
@@ -15,7 +17,7 @@ class Question(models.Model):
     def __str__(self):
         return self.title
 
-
+# Colletion model for storing collections
 class Collection(models.Model):
     title = models.CharField(max_length=255)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

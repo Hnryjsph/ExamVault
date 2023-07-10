@@ -2,8 +2,8 @@ from rave_python import Rave, RaveExceptions, Misc
 import re
 
 
-public = "FLWPUBK_TEST-645532d24e73e56cdf04a8292d7d15d4-X"
-secret = "FLWSECK_TEST-1f3416a7a9063c640a15efac209f3a84-X"
+public = "FLWPUBK_TEST-640063b8119e165dd4435a0658104a3a-X"
+secret = "FLWSECK_TEST-23874cac44c288a6c8c62455785b7d67-X"
 rave = Rave(public, secret, usingEnv = False)
 
 
@@ -21,8 +21,10 @@ def validate_ugandan_phone_number(phone_number):
 # mobile payload
 payload = {
   "amount": "5000",
+   "network": "MTN",
+   "currency": "UGX",
   "email": "lokukuminga@gmail.com",
-  "phonenumber": "0782407832",
+  "phonenumber": "256782407832",
   "redirect_url": "https://rave-webhook.com/receivepayment",
   "IP":""
 }

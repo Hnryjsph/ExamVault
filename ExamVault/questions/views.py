@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Question, Collection, CustomUser
 from django.db.models import Q
 
+# View for the questions
 @login_required
 def questions(request):
 	user = CustomUser(id = request.user.id)
@@ -17,7 +18,7 @@ def questions(request):
 	}
 	return render(request,"questions.html", context)
 
-
+# View for the details when a question is clicked
 @login_required
 def details(request, id):
 	question = get_object_or_404(Question, id = id)
@@ -26,7 +27,7 @@ def details(request, id):
 	}
 	return render(request, "details.html", context)
 
-
+# View that returns all the collections
 @login_required
 def collections(request):
 	user = CustomUser(id = request.user.id)
@@ -35,6 +36,7 @@ def collections(request):
 	return render(request, 'collections.html', context)
 
 
+# View that is routed to, to remove a collection
 @login_required
 def collection_remove(request, id):
 	user = CustomUser(id = request.user.id)
@@ -50,6 +52,8 @@ def collection_remove(request, id):
     
 	return render(request, 'collections.html', context)
 
+# A view that is routed to, to remove a question
+# from a collection
 @login_required
 def question_remove(request, id):
 	user = CustomUser(id = request.user.id)
@@ -67,6 +71,7 @@ def question_remove(request, id):
 	return render(request, 'collections.html', context)
 
 
+# View that implements the serach functionality 
 @login_required
 def search(request):
 	context = {"questions": []}
@@ -83,6 +88,7 @@ def search(request):
 
 	return render(request, 'search.html', context)
 
+# A view that adds a question to a collection that exists or new
 @login_required
 def bookmark(request, id):
 	user = CustomUser(id = request.user.id)

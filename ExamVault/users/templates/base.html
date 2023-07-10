@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - Exam Vault</title>
+  <title>Exam Vault</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -38,8 +38,8 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+      <a href="#" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/logo.png' %}" alt="">
         <span class="d-none d-lg-block">Exam Vault</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -70,7 +70,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{% static 'assets/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
+            <img src="{{user.image.url}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{request.user}}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -84,7 +84,7 @@
             </li>
 
 
-            <li>
+            
             <li>
               <a class="dropdown-item d-flex align-items-center" href="{% url 'users:profile' %}">
                 <i class="bi bi-person"></i>
@@ -126,7 +126,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="{% url 'users:dashboard' %}">
+        <a class="nav-link {% if request.path == '/dashboard/' %} {% else %} collapsed {% endif %} " href="{% url 'users:dashboard' %}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -137,7 +137,7 @@
       <li class="nav-heading"></li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'questions:questions' %}">
+        <a class="nav-link {% if request.path == '/questions/' %} {% else %} collapsed {% endif %}" href="{% url 'questions:questions' %}">
           <i class="bi bi-journals"></i>
 
           <span>Questions</span>
@@ -146,7 +146,7 @@
       <!-- End Questions Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'questions:collections' %}">
+        <a class="nav-link {% if request.path == '/questions/collections/' %} {% else %} collapsed {% endif %}" href="{% url 'questions:collections' %}">
           <i class="bi bi-bookmark-heart-fill"></i>
 
           <span>Collections</span>
@@ -154,7 +154,7 @@
       </li><!-- End Collections Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'notifications:notifications' %}">
+        <a class="nav-link {% if request.path == '/notifications/' %} {% else %} collapsed {% endif %}" href="{% url 'notifications:notifications' %}">
           <i class="bi bi-bell"></i>
 
           <span>Notifications</span>
@@ -162,7 +162,7 @@
       </li><!-- End Notifications Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'subscription:subscription' %}">
+        <a class="nav-link {% if request.path == '/subscription/' %} {% else %} collapsed {% endif %}" href="{% url 'subscription:subscription' %}">
           <i class="bi bi-credit-card"></i>
 
           <span>Subscription</span>
@@ -170,7 +170,7 @@
       </li><!-- End Subscription Page Nav -->
 
        <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'users:contact' %}">
+        <a class="nav-link {% if request.path == '/contact/' %} {% else %} collapsed {% endif %}" href="{% url 'users:contact' %}">
           <i class="bi bi-chat-left-text"></i>
           <span>Feedback</span>
         </a>
@@ -178,14 +178,14 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'users:profile' %}">
+        <a class="nav-link {% if request.path == '/profile/' %} {% else %} collapsed {% endif %}" href="{% url 'users:profile' %}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'users:faq' %}">
+        <a class="nav-link {% if request.path == '/faq/' %} {% else %} collapsed {% endif %}" href="{% url 'users:faq' %}">
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>

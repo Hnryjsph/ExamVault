@@ -16,6 +16,7 @@ GENDER_CHOICES = (
 )
 
 
+# Form for the Custom User Model, Helps in SignUps
 class CustomUserCreationForm(UserCreationForm):
     phone_number = forms.CharField(max_length=20)
     #gender = forms.ChoiceField(choices = GENDER_CHOICES)
@@ -26,12 +27,12 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 
-
+# Form that helps in Login
 class LoginForm(AuthenticationForm):
     username = forms.CharField(max_length=20)
     password = forms.CharField(max_length=20)
 
-
+# Form that helps to update profile information
 class UpdateUserForm(forms.ModelForm):
     image = forms.ImageField()
     username = forms.CharField(max_length = 20)

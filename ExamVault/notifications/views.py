@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Notification
 from users.models import CustomUser
 
+# Notification view that returns a view for notifications
 @login_required
 def notifications(request):
 	if request.method == 'POST':

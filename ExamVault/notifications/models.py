@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import CustomUser
 
+# Database that stores the notifications
 class Notification(models.Model):
     message = models.CharField(max_length=255)
     recipients = models.ManyToManyField(CustomUser, blank=True, related_name='notifications')
@@ -15,7 +16,8 @@ class Notification(models.Model):
     	super().save(*args, **kwargs)
 
     	self.send_notification()
-
+        
+    # When called sends notifications to all users
     def send_notification(self):
         if self.send_to_all:
             recipients = CustomUser.objects.all()
@@ -27,6 +29,7 @@ class Notification(models.Model):
             self.recipients.add(recipient)
             #self.save()
 
+    # Deletes notifications when called
     def delete_notification(self, user):
         
         self.recipients.remove(user)

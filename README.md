@@ -3,7 +3,7 @@
 ## Introduction
 Exam Vault is a comprehensive online platform designed to provide university students and educators with easy access to a wide range of examination questions for various course units and subjects.
 
-**Final Project Blog Article:** [Link to Blog Article](https://www.examvault.com/blog)  
+**Final Project Blog Article:** [Link to Blog Article]()  
 **Author(s) LinkedIn:** [Henry Joseph Phillip Lokuku](https://www.linkedin.com/in/hnry-jsph/), 
 
 ![Exam Vault Screenshot](5.png)
@@ -14,7 +14,7 @@ To install and run Exam Vault locally, follow these steps:
 1. Clone the repository:
 
 ```cmd
-git clone https://github.com/your-username/exam-vault.git
+git clone https://github.com/hnryjsph/ExamVault.git
 ```
 ```
 cd exam-vault
